@@ -1,0 +1,37 @@
+<!--pages/contentInfo/contentInfo.wxml-->
+
+<view class="container" >
+  <import src='../../template/operationbar.wxml'/>
+  <view class='flex-wrp' style="width:100%;height: auto;flex-direction:column;">
+     <view  class="flex-item" >
+             
+       <image  class="headerImage"  mode='scaleToFill' src='https://www.leqienglish.com/file/download?path={{widthImagePath}}'></image>
+           </view>
+         <view  class="flex-item title" >
+         
+      <text>{{title}}</text>
+          </view>
+     </view>
+
+
+
+ <scroll-view  scroll-y
+    style="height: auto;margin-bottom:50px;margin-top:10px"
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"  >
+        <view wx:for="{{segmentList}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
+          <view class='contentList-item flex-wrp' style="height: auto;flex-direction:column;">
+         
+           <view bindtap='segmentTitleTap' data-id='{{item.id}}'  data-title='{{item.title}}' class="flex-item" style='height:30px'>
+              <text class="todolist-title">{{item.title}}</text>
+            </view>
+
+             <view  class="flex-item hor-gap">
+             </view>
+          </view>
+        </view>
+      </scroll-view>
+    <view style='width:100%' bindtap='onclickItem' data-item='{{operationbarItems}}'>
+<template is='operationbar'  data='{{operationbarItems}}' style='width:100%'></template>
+</view>
+</view>

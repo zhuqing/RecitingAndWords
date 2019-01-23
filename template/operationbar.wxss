@@ -1,0 +1,47 @@
+.operation-item{
+ width: 100%;
+ align-items: center;
+ justify-content: center;
+
+}
+
+.operation-item-title{
+  font-size: 13px;
+  width: 100%;
+  color:  dimgray;
+  align-content: center;
+  text-align: center;
+
+}
+
+.operationbar{
+  background: lightgray
+}
+
+.operation-item-image{
+ align-content: center;
+}
+
+
+
+/*横向布局  */
+.layout_horizontal{
+  height: auto;
+  width: 100%;
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+}
+
+/*纵向布局  */
+.layout_vertical{
+  height: auto;
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: column;
+}
+
+.hor-gap{
+  background-color:darkgray;
+  height: 1px;
+}

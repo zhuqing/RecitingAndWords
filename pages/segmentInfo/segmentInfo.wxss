@@ -1,0 +1,15 @@
+/* pages/segmentInfo/segmentInfo.wxss */
+
+.segment-ch {
+  color:dimgray;
+  font-size: 14px;
+
+}
+.segment-eng {
+  color:black;
+  font-size: 18px;
+}
+.segment-item{
+  margin: 10rpx;
+  background-color: whitesmoke
+}

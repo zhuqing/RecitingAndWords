@@ -1,0 +1,2 @@
+/* pages/contentInfo/contentInfo.wxss */
+@import "../../template/operationbar.wxss";

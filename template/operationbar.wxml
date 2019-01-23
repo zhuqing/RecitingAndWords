@@ -1,0 +1,24 @@
+<template name="operationbar">
+ <view class='layout_vertical operationbar' >
+  <view class='hor-gap'></view>
+   
+  <view class='layout_horizontal ' style="flex-direction:row;">
+    <block wx:for="{{operationbarItems}}" wx:for-item="item">
+     
+      <template is='operationItem' data='{{item}}' />
+      
+    </block>
+  </view>
+  </view>
+</template>
+
+<template name="operationItem">
+  <view class='layout_vertical operation-item' bindtap='onclick' data-item='{{item}}' >
+
+       <image class='operation-item-image' src='{{item.icon}}' style='width:60rpx;height:60rpx;margin-bottom:2rpx;margin-top:2rpx '></image>
+  
+ 
+       <text class='operation-item-title'>{{item.title}}</text>
+
+  </view>
+</template>

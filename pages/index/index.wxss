@@ -1,0 +1,88 @@
+/**index.wxss**/
+@import "../../template/operationbar.wxss";
+
+.userinfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  background-color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.userinfo-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: blue;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.todolist-container{
+    margin-top: 5px;
+    width: 100%;
+   height: 900rpx;
+    background-color: white
+    
+}
+
+
+
+.contentList-item{
+   background-color: whitesmoke;
+   margin: 10rpx;
+}
+.contentList-item image{
+ 
+    width:100%
+}
+
+.content-item-createDate{
+  color: darkgrey;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 13px;
+}
+.todolist-title{
+  color: black;
+  font-size: 18px;
+  
+  font-style: initial;
+  width: auto;
+
+}
+
+.edit_image {
+  width: 128rpx;
+  height: 128rpx;
+  display: flex;
+
+  border-radius: 10%;
+}
+
+.controls {
+  position: relative;
+  top: 50%;
+  height: 50px;
+ 
+  display: flex;
+}

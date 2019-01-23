@@ -1,0 +1,28 @@
+<!--pages/segmentInfo/segmentInfo.wxml-->
+<view class='title'>
+<text>{{title}}</text>
+</view>
+
+ <scroll-view  scroll-y
+    style="height: auto;"
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"  >
+        <view wx:for="{{segemntItems}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
+          <view class='segment-item flex-wrp' style="height: auto;flex-direction:column;">
+           <view  class="flex-item" style='height:15rpx'>
+             </view>
+           <view bindtap='segmentTitleTap' data-title='{{item.title}}' class="flex-item">
+              <text class="segment-eng">{{item.eng}}</text>
+            </view>
+            
+             <view bindtap='segmentTitleTap' data-id='{{item.id}}'  data-title='{{item.title}}' class="flex-item">
+              <text class="segment-ch">{{item.ch}}</text>
+            </view>
+        
+           
+             <view  class="flex-item ver-gap">
+             </view>
+          </view>
+        </view>
+      </scroll-view>
+

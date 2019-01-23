@@ -1,0 +1,41 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+
+.hor-gap{
+  background-color: white;
+  height: 2px;
+  width: 100%;
+}
+
+.ver-gap{
+  background-color: white;
+  height: auto;
+  width: 2px;
+
+}
+
+.title{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  align-content: center
+}
+
+.headerImage{
+ width: 100%;
+
+}
+
+.operationbar {
+position: fixed;
+bottom: 0;
+background:  lightgray;
+width: 100%;
+}

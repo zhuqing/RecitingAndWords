@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/contentInfo/contentInfo",
+    "pages/segmentInfo/segmentInfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "背演讲，记单词",
+    "navigationBarTextStyle": "black"
+  }
+}
