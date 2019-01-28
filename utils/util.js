@@ -1,5 +1,5 @@
 
-
+const app = getApp()
 //数据转化
 function formatNumber(n) {
   n = n.toString()
@@ -31,8 +31,21 @@ function formatTime(number, format) {
   return format;
 }
 
+/**
+ * 点赞
+ */
+function heartedContent(userId,id){
+  console.log(app.globalData.HOST+"\t" + userId+"\t"+id)
+  wx.request({
+    url: app.globalData.HOST +'english/content/awesome?userId='+userId+'&id='+id,
+    method:'PUT'
 
+  })
+}
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  heartedContent: heartedContent
 }
+
+

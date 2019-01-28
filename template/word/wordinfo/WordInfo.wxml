@@ -1,0 +1,23 @@
+<template name="wordinfo">
+  <view class='flex-wrp wordinfo' style="height: auto;flex-direction:column;">
+    <view class='flex-item'>
+      <text class='title'>{{item.word}}</text>
+    </view>
+    <block wx:if='{{item.phAm != "" && item.phAm != ""}}'>
+      <view bindtap='playWord' data-src='{{item.amAudionPath}}' class='flex-item' wx:if='{{item.phAm != ""}}'>
+        <text class='wordinfo-prounce'>美音 <text>[{{item.phAm}}]</text></text>
+             <image style='width:15px;height:15px' src='../../../icons/play_word.png'></image>
+      </view>
+      <view bindtap='playWord' data-src='{{item.enAudioPath}}' class='flex-item' wx:if='{{item.phEn != ""}}'>
+        <text class='wordinfo-prounce'>英音 <text>[{{item.phEn}}]</text></text>
+             <image style='width:15px;height:15px' src='../../../icons/play_word.png'></image>
+      </view>
+    </block>
+    <block wx:else>
+
+      <view class='flex-item'  bindtap='playWord' data-src='{{item.ttsAudioPath}}'  >
+        <image style='width:20px;height:20px' src='../../../icons/play_word.png'></image>
+      </view>
+    </block>
+  </view>
+</template>

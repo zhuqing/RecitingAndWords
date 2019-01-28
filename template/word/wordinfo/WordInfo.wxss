@@ -1,0 +1,9 @@
+.wordinfo-prounce{
+  font-size: 14px;
+  color:darkslategray;
+ 
+}
+
+.wordinfo{
+border-bottom: 1px black solid 
+}

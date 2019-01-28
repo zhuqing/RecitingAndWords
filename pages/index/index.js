@@ -5,6 +5,7 @@ const utils = require("../../utils/util.js")
 
 Page({
   data: {
+    httpurl: app.globalData.HOST,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -46,7 +47,7 @@ Page({
         }
       })
     }
-
+    this.setData({ httpurl: app.globalData.HOST });
     this.loadData()
   },
   getUserInfo: function (e) {
@@ -58,13 +59,16 @@ Page({
     })
   },
 
+//点击标题或图片事件
   contentTitleTap:function(e){
-    console.log(e.currentTarget.dataset['id'])
+ 
     var id = e.currentTarget.dataset['id']
     var title = e.currentTarget.dataset['title']
     var widthImagePath = e.currentTarget.dataset['image']
+    var awesomeNum = e.currentTarget.dataset['awesome']
+
     wx.navigateTo({
-      url: '../contentInfo/contentInfo?id=' + id + '&title=' + title + '&widthImagePath=' + widthImagePath
+      url: '../contentInfo/contentInfo?id=' + id + '&title=' + title + '&widthImagePath=' + widthImagePath + '&awesomeNum=' + awesomeNum
     })
   },
 
@@ -75,7 +79,7 @@ Page({
     }) 
     var that = this 
     wx.request({
-      url: 'https://www.leqienglish.com/english/content/findAll',
+      url: app.globalData.HOST+'english/content/findAll',
       method:'GET',
       header: {
         'Content-Type': 'application/json'
@@ -85,6 +89,8 @@ Page({
         console.log(res.data.data) 
         var datas = JSON.parse(res.data.data)
         for(var i = 0 ; i < datas.length ; i++){
+          //对每个Content缓存
+          wx.setStorageSync(datas[i].id, datas[i])
           datas[i].createDateFormate = utils.formatTime(datas[i].createDate, 'Y/M/D h:m:s')
         }
         that.setData({ contentList: datas })

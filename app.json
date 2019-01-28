@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/contentInfo/contentInfo",
-    "pages/segmentInfo/segmentInfo"
+    "pages/segmentInfo/segmentInfo",
+    "pages/word/WordAndShortWord/WordAndShortWord"
   ],
   "window": {
     "backgroundTextStyle": "light",

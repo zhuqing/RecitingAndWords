@@ -1,0 +1,3 @@
+/* pages/word/WordAndShortWord/WordAndShortWord.wxss */
+@import "../../../template/operationbar.wxss";
+@import "../../../template/word/wordinfo/WordInfo.wxss";

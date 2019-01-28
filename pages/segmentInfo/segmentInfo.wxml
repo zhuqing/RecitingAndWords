@@ -1,4 +1,9 @@
 <!--pages/segmentInfo/segmentInfo.wxml-->
+
+<view class='container'>
+
+  <import src='../../template/operationbar.wxml'/>
+  <import src='../../template/player/floatplayerbutton.wxml'/>
 <view class='title'>
 <text>{{title}}</text>
 </view>
@@ -8,11 +13,11 @@
     bindscrolltoupper="upper"
     bindscrolltolower="lower"  >
         <view wx:for="{{segemntItems}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
-          <view class='segment-item flex-wrp' style="height: auto;flex-direction:column;">
+          <view class='segment-item flex-wrp' bindtap='itemClickHandler' data-index='{{idx}}' style="height: auto;flex-direction:column;">
            <view  class="flex-item" style='height:15rpx'>
              </view>
            <view bindtap='segmentTitleTap' data-title='{{item.title}}' class="flex-item">
-              <text class="segment-eng">{{item.eng}}</text>
+              <text class='{{selectedIndex == idx ? "segment-eng-selected":"segment-eng"}}'>{{item.eng}}</text>
             </view>
             
              <view bindtap='segmentTitleTap' data-id='{{item.id}}'  data-title='{{item.title}}' class="flex-item">
@@ -26,3 +31,9 @@
         </view>
       </scroll-view>
 
+<template is='floatplayer' data='{{playerItem}}' ></template>
+
+<view style='width:100%' bindtap='onclick' data-item='{{operationbarItems}}'>
+<template is='operationbar'  data='{{operationbarItems}}' style='width:100%'></template>
+</view>
+</view>

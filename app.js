@@ -1,7 +1,9 @@
 //app.js
+const UserUtil = require("./utils/user.js")
 App({
   onLaunch: function () {
     // 展示本地存储能力
+    var that = this
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
@@ -10,6 +12,23 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          wx.getUserInfo({
+            success: function (res) {
+              var objz = {};
+              objz.avatarUrl = res.userInfo.avatarUrl;
+              objz.nickName = res.userInfo.nickName;
+              console.log(res.userInfo);
+              wx.setStorageSync('userInfo', res.userInfo);//存储userInfo
+            }
+          });
+
+          UserUtil.findUnionId(res.code)
+         
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+
       }
     })
     // 获取用户信息
@@ -33,7 +52,12 @@ App({
       }
     })
   },
+
   globalData: {
-    userInfo: null
+    userInfo: null,
+    HOST:'https://www.leqienglish.com/',
+    appid: 'wxcd8caacdbc65467e',//appid需自己提供，此处的appid我随机编写
+    secret: '2a60000d360dba6816af1f28abe291a1',//secret需自己提供，此处的secret我随机编写
+
   }
 })

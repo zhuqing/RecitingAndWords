@@ -7,7 +7,7 @@
              
        <image  class="headerImage"  mode='scaleToFill' src='https://www.leqienglish.com/file/download?path={{widthImagePath}}'></image>
            </view>
-         <view  class="flex-item title" >
+         <view  class="flex-item title" style='height:auto' >
          
       <text>{{title}}</text>
           </view>
@@ -22,8 +22,8 @@
         <view wx:for="{{segmentList}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
           <view class='contentList-item flex-wrp' style="height: auto;flex-direction:column;">
          
-           <view bindtap='segmentTitleTap' data-id='{{item.id}}'  data-title='{{item.title}}' class="flex-item" style='height:30px'>
-              <text class="todolist-title">{{item.title}}</text>
+           <view bindtap='segmentTitleTap' data-id='{{item.id}}'  data-title='{{item.title}}' class="flex-item" style='height:auto'>
+              <text class="todolist-title" style='margin-top:5px;'>{{item.title}}</text>
             </view>
 
              <view  class="flex-item hor-gap">

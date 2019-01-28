@@ -1,5 +1,8 @@
 // pages/contentInfo/contentInfo.js
-
+const app = getApp()
+const utils = require("../../utils/util.js")
+const UserUtil = require("../../utils/user.js")
+const HeartUtil = require("../../utils/heart.js")
 Page({
 
   /**
@@ -7,6 +10,7 @@ Page({
    */
   data: {
     contentId:'',
+    content:{},
     title:'',
     widthImagePath:'',
     segmentList:[],
@@ -38,13 +42,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var awesomeNum = 'operationbarItems[2].title'
     this.setData(
       { contentId: options.id,
         widthImagePath: options.widthImagePath,
+        [awesomeNum]: options.awesomeNum,
+      
        title:options.title}
     )
 
+    HeartUtil.hasHearted(options.id,this.hasHearted)
     this.loadData()
+  },
+
+  hasHearted:function(hasHearted){
+    var icon = 'operationbarItems[2].icon'
+   
+    if(hasHearted){
+      this.setData(
+        {
+          [icon]: '../../icons/heart_red.png'
+        })
+    }else{
+      this.setData(
+        {
+          [icon]: '../../icons/heart.png'
+        })
+    }
   },
 
   /**
@@ -113,14 +138,14 @@ Page({
 
     var that = this
     wx.request({
-      url: 'https://www.leqienglish.com/segment/findByContentId?contentId='+this.data.contentId,
+      url: app.globalData.HOST+ 'segment/findByContentId?contentId='+this.data.contentId,
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
         wx.hideToast();
-        console.log(res.data.data)
+       // console.log(res.data.data)
         var datas = JSON.parse(res.data.data)
        
         that.setData({ segmentList: datas })
@@ -140,8 +165,22 @@ Page({
       case 'return':
           wx.navigateBack()
           break
+      case 'heart':
+        var content = wx.getStorageSync(this.data.contentId)
+        HeartUtil.heartedContent(this.data.contentId)
+        var awesomeNum = 'operationbarItems[2].title'
+        var icon = 'operationbarItems[2].icon'
+        this.setData(
+          {
+           
+            [awesomeNum]: content.awesomeNum +1,
+            [icon]: '../../icons/heart_red.png'
+          
+          }
+        )
+          break
           case 'share':
-        wx.onShareAppMessage()
+            wx.onShareAppMessage()
     }
   }
 })

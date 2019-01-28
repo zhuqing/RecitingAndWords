@@ -1,0 +1,17 @@
+<!--pages/word/WordAndShortWord/WordAndShortWord.wxml-->
+
+<view class="container" >
+  <import src='../../../template/word/wordinfo/WordInfo.wxml'/>
+ <scroll-view  scroll-y
+    style="height: auto;margin-bottom:50px;margin-top:10px"
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"  >
+        <view wx:for="{{wordList}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
+          <view bindtap='playWord' style="height: auto;flex-direction:column;">
+            <template is='wordinfo'  data='{{item}}' style='width:100%'></template>
+         
+          </view>
+        </view>
+      </scroll-view>
+    
+</view>
