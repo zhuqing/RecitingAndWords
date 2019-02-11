@@ -1,0 +1,8 @@
+<template name="SimplePlayer">
+<view class='player-position'  style='bottom: {{simplePlayerItem.bottom}}px;right: {{simplePlayerItem.right}}px;'>
+ <image src='{{simplePlayerItem.src}}' bindtap='simplePlayerClickHandler' class='simple-player-image'>
+ </image>
+
+</view>
+
+</template>

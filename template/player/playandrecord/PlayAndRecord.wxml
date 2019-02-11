@@ -1,0 +1,13 @@
+<template name="PlayAndRecord">
+ <view class='flex-item layout_horizontal player-bar-container' style="flex-direction:row;margin-bottom:5px">
+<view  class='player-bar-item'>
+         <image  bindtap='playAndRecordPlay' class='player-bar-image' src='{{playAndReocrdItem.play_icon}}'></image>
+       </view>
+      <view  class='player-bar-item'>
+         <image bindtap='playAndRecordRecord' class='player-bar-image' src='{{playAndReocrdItem.record_icon}}'></image>
+        </view>
+        <view  class='player-bar-item'>
+         <image  bindtap='playAndRecordRePlay' class='player-bar-image' src='{{playAndReocrdItem.replay_icon}}'></image>
+        </view>
+    </view>
+</template>

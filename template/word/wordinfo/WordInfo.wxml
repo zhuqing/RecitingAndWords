@@ -4,11 +4,11 @@
       <text class='title'>{{item.word}}</text>
     </view>
     <block wx:if='{{item.phAm != "" && item.phAm != ""}}'>
-      <view bindtap='playWord' data-src='{{item.amAudionPath}}' class='flex-item' wx:if='{{item.phAm != ""}}'>
+      <view bindtap='playWord' data-tts='{{item.ttsAudioPath}}' data-src='{{item.amAudionPath}}' class='flex-item' wx:if='{{item.phAm != ""}}'>
         <text class='wordinfo-prounce'>美音 <text>[{{item.phAm}}]</text></text>
              <image style='width:15px;height:15px' src='../../../icons/play_word.png'></image>
       </view>
-      <view bindtap='playWord' data-src='{{item.enAudioPath}}' class='flex-item' wx:if='{{item.phEn != ""}}'>
+      <view bindtap='playWord' data-tts='{{item.ttsAudioPath}}' data-src='{{item.enAudioPath}}' class='flex-item' wx:if='{{item.phEn != ""}}'>
         <text class='wordinfo-prounce'>英音 <text>[{{item.phEn}}]</text></text>
              <image style='width:15px;height:15px' src='../../../icons/play_word.png'></image>
       </view>

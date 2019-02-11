@@ -1,29 +1,37 @@
-// pages/word/WordAndShortWord/WordAndShortWord.js
-const WordUtil = require("../../../utils/word/Word.js")
-const WordInfo = require("../../../template/word/wordinfo/WordInfo.js")
+// pages/word/ShortWord/ShortWord.js
+const Segment = require("../../../utils/entity/segment/Segment.js")
+const ShortWord = require("../../../utils/entity/shortword/ShortWord.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     wordList:[]
+    shortWordList:[],
+    segment:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   this.loadData(options.id)
+    var that = this
+
+
+    // Segment.getById(options.id,(data)=>{
+    //    that.setData({
+    //      segment:data
+    //    })
+    // })
+    console.log(options.id)
+    this.loadShortWord(options.id)
   },
 
-  loadData:function(id){
+  loadShortWord:function(segmentId){
     var that = this
-    WordUtil.findWordsBySegmentId(id,function(words){
-      console.log(words)
+    ShortWord.getBySegmentId(segmentId,(datas)=>{
       that.setData({
-       
-        wordList:words
+        shortWordList: datas
       })
     })
   },
@@ -75,15 +83,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  playWord:function(e){
-    console.log(e.currentTarget.dataset)
-    if (e.currentTarget.dataset.scr == "" || e.currentTarget.dataset.scr == null){
-      WordUtil.play("word", e.currentTarget.dataset.tts)
-    }else{
-      WordUtil.play("word", e.currentTarget.dataset.src)
-    }
- 
   }
 })

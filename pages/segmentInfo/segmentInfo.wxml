@@ -3,17 +3,20 @@
 <view class='container'>
 
   <import src='../../template/operationbar.wxml'/>
-  <import src='../../template/player/floatplayerbutton.wxml'/>
+  <import src='../../template/player/simple/SimplePlayer.wxml'/>
+
+    <import src='../../template/player/playandrecord/PlayAndRecord.wxml'/>
 <view class='title'>
 <text>{{title}}</text>
 </view>
 
- <scroll-view  scroll-y
-    style="height: auto;"
-    bindscrolltoupper="upper"
-    bindscrolltolower="lower"  >
-        <view wx:for="{{segemntItems}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
-          <view class='segment-item flex-wrp' bindtap='itemClickHandler' data-index='{{idx}}' style="height: auto;flex-direction:column;">
+ <scroll-view   scroll-y='1'
+    style="height: calc(100vh - 60px)"
+scroll-with-animation ="true"
+    scroll-into-view="{{scrollToId}}"
+    >
+        <block wx:for="{{segemntItems}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
+          <view id='{{"segmentId_"+idx}}' class='segment-item flex-wrp' bindtap='itemClickHandler' data-index='{{idx}}' style="height: auto;flex-direction:column;">
            <view  class="flex-item" style='height:15rpx'>
              </view>
            <view bindtap='segmentTitleTap' data-title='{{item.title}}' class="flex-item">
@@ -23,17 +26,21 @@
              <view bindtap='segmentTitleTap' data-id='{{item.id}}'  data-title='{{item.title}}' class="flex-item">
               <text class="segment-ch">{{item.ch}}</text>
             </view>
-        
-           
-             <view  class="flex-item ver-gap">
+          
+            <view  class="flex-item " style="display:{{playAndRecordIndex==idx?'block':'none'}};height:60px;margin-top:5px">
+             <template is='PlayAndRecord' data='{{playAndReocrdItem}}'  ></template>
              </view>
+             
           </view>
-        </view>
+        </block>
       </scroll-view>
 
-<template is='floatplayer' data='{{playerItem}}' ></template>
 
-<view style='width:100%' bindtap='onclick' data-item='{{operationbarItems}}'>
+
+<view style='width:100%'  data-item='{{operationbarItems}}'>
 <template is='operationbar'  data='{{operationbarItems}}' style='width:100%'></template>
 </view>
+
+<template is='SimplePlayer' data='{{simplePlayerItem}}' ></template>
+
 </view>

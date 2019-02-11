@@ -19,7 +19,7 @@ function heartedSegment(id) {
   var userId = User.getUserId()
  // console.log(app.globalData.HOST + "\t" + userId + "\t" + id)
   wx.request({
-    url: Common.getHost() + 'english/segment/awesome?userId=' + userId + '&id=' + id,
+    url: Common.getHost() + 'segment/awesome?userId=' + userId + '&id=' + id,
     method: 'PUT'
 
   })
@@ -37,8 +37,10 @@ function hasHearted(id , callback){
       'Content-Type': 'application/json'
     },
     success:function(e){
-      console.log(e.data)
-      if(e.data.status == 0){
+      console.log(e)
+      var datas = JSON.parse(e.data.data)
+      console.log(datas.length)
+      if (datas.length != 0){
         callback(true)
       }else{
         callback(false)

@@ -1,8 +1,10 @@
 // pages/contentInfo/contentInfo.js
 const app = getApp()
 const utils = require("../../utils/util.js")
+const Content = require("../../utils/entity/Content.js")
 const UserUtil = require("../../utils/user.js")
 const HeartUtil = require("../../utils/heart.js")
+const Segment = require("../../utils/entity/segment/Segment.js")
 Page({
 
   /**
@@ -14,17 +16,14 @@ Page({
     title:'',
     widthImagePath:'',
     segmentList:[],
+    currentContent:{},
     operationbarItems: [
       {
         id:'return',
         icon: '../../icons/return_icon.png',
         title: '返回'
       },
-      {
-        id: 'listen',
-        icon: '../../icons/listen_icon.png',
-        title: '听音频'
-      },
+   
       {
         id: 'heart',
         icon: '../../icons/heart.png',
@@ -43,13 +42,15 @@ Page({
    */
   onLoad: function (options) {
 
-    var awesomeNum = 'operationbarItems[2].title'
+    var awesomeNum = 'operationbarItems[1].title'
+    var content = Content.getContent(options.id)
     this.setData(
-      { contentId: options.id,
-        widthImagePath: options.widthImagePath,
-        [awesomeNum]: options.awesomeNum,
-      
-       title:options.title}
+      {
+        contentId: content.id,
+        widthImagePath: content.widthImagePath,
+        [awesomeNum]: content.awesomeNum,
+        currentContent: content,
+        title: content.title}
     )
 
     HeartUtil.hasHearted(options.id,this.hasHearted)
@@ -57,7 +58,7 @@ Page({
   },
 
   hasHearted:function(hasHearted){
-    var icon = 'operationbarItems[2].icon'
+    var icon = 'operationbarItems[1].icon'
    
     if(hasHearted){
       this.setData(
@@ -119,8 +120,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    return {
+      title: this.data.title,
+      path: '/pages/contentInfo/contentInfo?id=' + this.data.contentId,
+      imageUrl: "",
+      success: (res) => {
+        console.log("转发成功", res);
+      },
+      fail: (res) => {
+        console.log("转发失败", res);
+      }
+    }
   },
 
   segmentTitleTap:function(e){
@@ -132,26 +143,18 @@ Page({
   },
 
   loadData: function () {
-    wx.showToast({
+    wx.showLoading({
       title: '数据加载中...',
-    }) 
+    })
 
     var that = this
-    wx.request({
-      url: app.globalData.HOST+ 'segment/findByContentId?contentId='+this.data.contentId,
-      method: 'GET',
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideToast();
-       // console.log(res.data.data)
-        var datas = JSON.parse(res.data.data)
-       
-        that.setData({ segmentList: datas })
-      }
+
+    Segment.getSegmentByContentId(this.data.contentId,function(datas){
+      wx.hideLoading()
+      that.setData({ segmentList: datas })
     })
-  },
+   
+  }, 
 
   onclickItem:function(e){
    // templates.onclick(e)
@@ -168,8 +171,8 @@ Page({
       case 'heart':
         var content = wx.getStorageSync(this.data.contentId)
         HeartUtil.heartedContent(this.data.contentId)
-        var awesomeNum = 'operationbarItems[2].title'
-        var icon = 'operationbarItems[2].icon'
+        var awesomeNum = 'operationbarItems[1].title'
+        var icon = 'operationbarItems[1].icon'
         this.setData(
           {
            
@@ -180,7 +183,8 @@ Page({
         )
           break
           case 'share':
-            wx.onShareAppMessage()
+          // super
+        break
     }
   }
 })

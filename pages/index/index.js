@@ -2,10 +2,10 @@
 //获取应用实例
 const app = getApp()
 const utils = require("../../utils/util.js")
-
+const Content = require("../../utils/entity/Content.js")
 Page({
   data: {
-    httpurl: app.globalData.HOST,
+    httpurl: app.globalData.HOST, 
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -14,12 +14,7 @@ Page({
   
     
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+  
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -63,38 +58,24 @@ Page({
   contentTitleTap:function(e){
  
     var id = e.currentTarget.dataset['id']
-    var title = e.currentTarget.dataset['title']
-    var widthImagePath = e.currentTarget.dataset['image']
-    var awesomeNum = e.currentTarget.dataset['awesome']
 
     wx.navigateTo({
-      url: '../contentInfo/contentInfo?id=' + id + '&title=' + title + '&widthImagePath=' + widthImagePath + '&awesomeNum=' + awesomeNum
+      url: '../contentInfo/contentInfo?id=' + id
     })
   },
 
 
   loadData:function(){
-    wx.showToast({
+    wx.showLoading({
       title: '数据加载中...', 
     }) 
     var that = this 
-    wx.request({
-      url: app.globalData.HOST+'english/content/findAll',
-      method:'GET',
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideToast();
-        console.log(res.data.data) 
-        var datas = JSON.parse(res.data.data)
-        for(var i = 0 ; i < datas.length ; i++){
-          //对每个Content缓存
-          wx.setStorageSync(datas[i].id, datas[i])
-          datas[i].createDateFormate = utils.formatTime(datas[i].createDate, 'Y/M/D h:m:s')
-        }
-        that.setData({ contentList: datas })
-      }
+
+    Content.findAll((datas)=>{
+      wx.hideLoading();
+     
+      that.setData({ contentList: datas })
     })
+   
   }
 })

@@ -1,0 +1,28 @@
+<!--index.wxml-->
+
+<view class="container" >
+  <import src='../../../template/player/playerbar/PlayerBar.wxml'/>
+
+
+   
+  <scroll-view  scroll-y
+    style="height: auto;margin-top:10px"
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"  >
+        <view wx:for="{{contentList}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
+          <view class='contentList-item layout_horizontal' style="height: auto;flex-direction:row;">
+           
+           <view bindtap='contentPlayTap' data-id='{{item.id}}' data-index='{{idx}}'  class="flex-item">
+              <text class="{{currentPlayIndex == idx?'content-itme-title-selected':'content-itme-title'}}">{{item.title}}</text>
+            </view> 
+          </view>
+        </view>
+      </scroll-view>
+
+      
+      <view class='to-bottom' style='width:100%;margin-bottom:5px'>
+       <template is='PlayerBar'  data='{{playBarItem}}'></template>
+      </view>
+ 
+</view>
+

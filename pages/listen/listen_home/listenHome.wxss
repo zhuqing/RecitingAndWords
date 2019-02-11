@@ -1,0 +1,60 @@
+
+@import "/template/player/playerbar/PlayerBar.wxss";
+.content-itme-title{
+    margin-top: 5px;
+    background-color: #00000000;
+    width:80%;
+    font-size: 14px;
+}
+
+.content-itme-title-selected{
+    margin-top: 5px;
+    background-color: #00000000;
+    font-size: 15px;
+    color: #ed0000;
+    width:100%;
+}
+
+.contentList-item{
+   background-color: whitesmoke;
+   flex-wrap:wrap;
+   margin-bottom: 3px;
+   justify-content:flex-start;
+   align-content: flex-start;
+}
+.contentList-item-image{
+  border-radius: 10%;
+  width:40px;
+  height:40px
+}
+
+.content-item-createDate{
+  color: darkgrey;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 13px;
+}
+.todolist-title{
+  color: black;
+  font-size: 18px;
+  
+  font-style: initial;
+  width: auto;
+
+}
+
+.edit_image {
+  width: 128rpx;
+  height: 128rpx;
+  display: flex;
+
+  border-radius: 10%;
+}
+
+.controls {
+  position: relative;
+  top: 50%;
+  height: 50px;
+ 
+  display: flex;
+}

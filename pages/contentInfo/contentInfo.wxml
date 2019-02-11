@@ -5,7 +5,16 @@
   <view class='flex-wrp' style="width:100%;height: auto;flex-direction:column;">
      <view  class="flex-item" >
              
-       <image  class="headerImage"  mode='scaleToFill' src='https://www.leqienglish.com/file/download?path={{widthImagePath}}'></image>
+      
+              <block wx:if='{{currentContent.localPath}}'>
+             <image  class="headerImage" mode='scaleToFill' src='{{currentContent.localPath}}'></image>
+           </block>
+           <block wx:else>
+            <image  class="headerImage" mode='scaleToFill' src='https://www.leqienglish.com/file/download?path={{currentContent.widthImagePath}}'></image>
+            
+            </block >
+         
+         
            </view>
          <view  class="flex-item title" style='height:auto' >
          
@@ -31,7 +40,7 @@
           </view>
         </view>
       </scroll-view>
-    <view style='width:100%' bindtap='onclickItem' data-item='{{operationbarItems}}'>
+    <view style='width:100%'  data-item='{{operationbarItems}}'>
 <template is='operationbar'  data='{{operationbarItems}}' style='width:100%'></template>
 </view>
 </view>

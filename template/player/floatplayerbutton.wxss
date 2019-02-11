@@ -5,13 +5,12 @@
 }
 
 .player-position {
-    border-radius: 50%;
-  border: 1px darkgrays solid;
+
   width:60px;
   height:60px;
   align-items: center;
   justify-content:center;
-position: fixed;
-background-color: whitesmoke;
-
+  position: fixed;
+bottom: 0;
+background-color: darkblue
 }

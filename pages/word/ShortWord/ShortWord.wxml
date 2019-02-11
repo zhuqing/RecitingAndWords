@@ -1,0 +1,31 @@
+<!--pages/word/ShortWord/ShortWord.wxml-->
+<view class="container">
+
+  <scroll-view scroll-y style="height: auto;margin-bottom:50px;margin-top:10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+    <block wx:for="{{shortWordList}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
+      <view class='flex-wrp item-shortword' style="height: auto;flex-direction:column;">
+        <view class="flex-item">
+          <text class='title'>{{item.word}}</text>
+        </view>
+
+        <view class="flex-item sub-title">
+          <text class='sub-title'>{{item.info}}</text>
+        </view>
+        
+        <block wx:for="{{item.sentences}}" wx:for-index="idxs" wx:key="is" wx:for-item="sentence">
+          <view class='flex-wrp sub-item-shortword' style="height: auto;flex-direction:column;">
+            <view class="flex-item">
+              <text class='sentence-eng'>{{idxs+1}}.{{sentence.english}}</text>
+            </view>
+
+            <view class="flex-item">
+              <text class='sentence-ch'>{{sentence.chinese}}</text>
+            </view>
+          </view>
+          </block>
+      </view>
+      </block>
+
+  </scroll-view>
+
+</view>

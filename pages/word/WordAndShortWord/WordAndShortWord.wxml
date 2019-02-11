@@ -7,7 +7,7 @@
     bindscrolltoupper="upper"
     bindscrolltolower="lower"  >
         <view wx:for="{{wordList}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
-          <view bindtap='playWord' style="height: auto;flex-direction:column;">
+          <view  style="height: auto;flex-direction:column;">
             <template is='wordinfo'  data='{{item}}' style='width:100%'></template>
          
           </view>

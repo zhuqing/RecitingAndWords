@@ -1,0 +1,30 @@
+/* pages/word/ShortWord/ShortWord.wxss */
+
+.sub-title{
+  font-size: 14px;
+  color: dimgray;
+  margin-bottom: 10px
+}
+
+.sentence-eng{
+  font-size: 15px;
+}
+
+.sentence-ch{
+  font-size: 13px;
+   color: dimgray
+}
+
+.sub-item-shortword{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.item-shortword{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px gray solid
+}

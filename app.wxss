@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+
 } 
 
 .hor-gap{
@@ -38,4 +39,27 @@ position: fixed;
 bottom: 0;
 background:  lightgray;
 width: 100%;
+}
+
+.to-bottom{
+  position: fixed;
+bottom: 0;
+width: 100%;
+}
+
+/*横向布局  */
+.layout_horizontal{
+  height: auto;
+  width: 100%;
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+}
+
+/*纵向布局  */
+.layout_vertical{
+  height: auto;
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: column;
 }

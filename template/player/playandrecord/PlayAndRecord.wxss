@@ -1,0 +1,20 @@
+.player-bar-root{
+  background-color: whitesmoke;
+  border: 1px darkgray solid;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 3%;
+}
+
+.player-bar-image{
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+ align-content: center;
+}
+.player-bar-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 100%;
+}

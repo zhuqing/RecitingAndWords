@@ -1,5 +1,6 @@
 /* pages/segmentInfo/segmentInfo.wxss */
-@import "/template/player/floatplayerbutton.wxss";
+@import "/template/player/playandrecord/PlayAndRecord.wxss";
+@import "/template/player/simple/SimplePlayer.wxss";
 @import "/template/operationbar.wxss";
 .segment-ch {
   color:green;
@@ -13,7 +14,7 @@
 .segment-item{
   margin-top:10px; 
   padding: 10px;
-  border-top: 1px darkgray solid;
+
   border-bottom: 1px darkgray solid;
   background-color: white;
 }

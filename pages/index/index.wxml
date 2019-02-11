@@ -22,19 +22,25 @@
     bindscrolltoupper="upper"
     bindscrolltolower="lower"  >
         <view wx:for="{{contentList}}" wx:for-index="idx" wx:key="i" wx:for-item="item">
-          <view class='contentList-item flex-wrp' style="height: auto;flex-direction:column;">
+          <view class='contentList-item flex-wrap' style="height: auto;flex-direction:column;">
            <view  class="flex-item" style='height:15rpx'>
              </view>
-           <view bindtap='contentTitleTap' data-id='{{item.id}}' data-title='{{item.title}}' data-image='{{item.widthImagePath}}'  data-awesome='{{item.awesomeNum}}'  class="flex-item">
+           <view bindtap='contentTitleTap' data-id='{{item.id}}'  class="flex-item">
               <text class="todolist-title">{{item.title}}</text>
-            </view>
+            </view> 
              <view  class="flex-item">
               <text class="content-item-createDate">发布于：{{item.createDateFormate}}</text>
             </view>
              <view  class="flex-item" style='height:15rpx'>
              </view>
-          <view bindtap='contentTitleTap' data-id='{{item.id}}' data-title='{{item.title}}' data-image='{{item.widthImagePath}}'  data-awesome='{{item.awesomeNum}}' class="flex-item ">
-            <image mode='scaleToFill' src='{{httpurl}}file/download?path={{item.widthImagePath}}'></image>
+          <view bindtap='contentTitleTap' data-id='{{item.id}}'  class="flex-item ">
+           <block wx:if='{{item.localPath}}'>
+             <image mode='scaleToFill' src='{{item.localPath}}'></image>
+           </block>
+           <block wx:else>
+            <image mode='scaleToFill' src='https://www.leqienglish.com/file/download?path={{item.widthImagePath}}'></image>
+            
+            </block >
             </view>
 
            

@@ -14,10 +14,10 @@
 
 <template name="operationItem">
   <view class='layout_vertical operation-item' bindtap='onclick' data-item='{{item}}' >
-
-       <image class='operation-item-image' src='{{item.icon}}' style='width:60rpx;height:60rpx;margin-bottom:2rpx;margin-top:2rpx '></image>
+<button style=';margin-top:2rpx' open-type='{{item.id}}'>
+       <image class='operation-item-image' src='{{item.icon}}' style='width:70rpx;height:70rpx; '></image>
   
- 
+ </button>
        <text class='operation-item-title'>{{item.title}}</text>
 
   </view>

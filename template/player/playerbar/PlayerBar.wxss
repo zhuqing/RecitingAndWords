@@ -1,0 +1,52 @@
+.player-bar-image{
+  width: 40px;
+  height: 40px;
+  margin-left: 40px;
+  margin-top: 10px;
+    margin-right: 40px;
+  justify-content: center;
+ align-content: center;
+}
+
+.player-bar-root{
+  background-color: whitesmoke;
+  border: 1px darkgray solid;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 3%;
+}
+
+.player-bar-container{
+  justify-content: center;
+   align-content: center;
+}
+
+.player-bar-playbar{
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 10px;
+ 
+}
+
+.player-bar-playbar-border{
+  width: 60px;
+  height: 60px;
+   border: 1px black solid;
+  border-radius: 50%;
+}
+
+button::after{
+border: none;
+}
+button{
+  background-color: rgba(255,255,255,0);
+  display:block;
+
+  padding-left:0px;
+
+padding-right:0px;
+
+line-height:10px;
+}
+

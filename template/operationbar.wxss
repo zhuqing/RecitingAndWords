@@ -21,25 +21,21 @@
 .operation-item-image{
  align-content: center;
 }
+button::after{
+border: none;
+}
+button{
+  background-color: rgba(255,255,255,0);
+  display:block;
+  border: 0px black solid;
 
+padding-left:0px;
 
+padding-right:0px;
 
-/*横向布局  */
-.layout_horizontal{
-  height: auto;
-  width: 100%;
-  display: flex;
-  /*row 横向  column 列表  */
-  flex-direction: row;
+line-height:10px;
 }
 
-/*纵向布局  */
-.layout_vertical{
-  height: auto;
-  display: flex;
-  /*row 横向  column 列表  */
-  flex-direction: column;
-}
 
 .hor-gap{
   background-color:darkgray;

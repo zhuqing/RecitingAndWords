@@ -1,0 +1,21 @@
+<template name="PlayerBar">
+  <view class='flex-wrp player-bar-root' style='flex-direction:column'>
+    <view class='flex-item'>
+    </view>
+     <view class='flex-item'>
+        <slider bindchange="slider2change" step="1" min='0' max='{{playBarItem.max}}' value='{{playBarItem.currentPlayTime}}' block-size='10' />
+    </view> 
+    <view class='flex-item layout_horizontal player-bar-container' style="flex-direction:row;margin-bottom:5px">
+
+         <image  bindtap='previousPlayer' class='player-bar-image' src='../../../icons/previous_new.png'></image>
+       
+       <view class='player-bar-playbar-border' bindtap='playOrStopPlayer'>
+         <image class='player-bar-playbar' src='{{playBarItem.play_icon}}'></image>
+       </view>
+        
+         <image  bindtap='nextPlayer' class='player-bar-image' src='../../../icons/next_new.png'></image>
+      
+    </view>
+  </view>
+
+</template>
